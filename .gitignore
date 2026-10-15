@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build
+build/
+dist/
+server.js
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs & coverage
+*.log
+npm-debug.log*
+coverage/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Lockfile noise (npm is canonical)
+bun.lock

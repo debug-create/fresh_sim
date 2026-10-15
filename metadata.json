@@ -1,0 +1,6 @@
+{
+  "name": "IKORI",
+  "description": "IKORI context-aware security intelligence with deterministic residual risk, identity telemetry, protective holds, and forensic case dossiers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
