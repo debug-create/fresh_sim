@@ -133,14 +133,14 @@ $$\text{Residual Risk} = \text{Raw Deviation Score} \times (1 - \text{Context Co
 ## 🚀 Quick Start Guide
 
 ### Prerequisites
-- Node.js 18.x or higher
+- Node.js 20.x or higher
 - npm 9.x or higher (or Bun / Yarn / pnpm)
 
 ### 1. Installation
 ```bash
 git clone <repository-url>
-cd frontff-main
-npm install --legacy-peer-deps
+cd fresh_sim
+npm ci
 ```
 
 ### 2. Development Server
@@ -156,9 +156,9 @@ npm run lint
 
 ### 4. Production Build
 ```bash
-npm run build
+npm run deploy:check
 ```
-Build outputs are generated in the `dist/` directory.
+This runs type checking, tests, the optimized Vite build, and deployment-artifact validation. Build outputs are generated in the `dist/` directory. See [DEPLOYMENT.md](./DEPLOYMENT.md) for Vercel and SPA routing details.
 
 ---
 

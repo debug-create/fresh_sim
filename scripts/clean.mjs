@@ -1,0 +1,8 @@
+import {rm} from 'node:fs/promises';
+
+await Promise.all([
+  rm(new URL('../dist', import.meta.url), {recursive: true, force: true}),
+  rm(new URL('../server.js', import.meta.url), {force: true}),
+]);
+
+console.log('Removed generated deployment artifacts.');

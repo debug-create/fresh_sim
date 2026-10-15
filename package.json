@@ -7,13 +7,14 @@
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview",
-    "clean": "rm -rf dist server.js",
+    "preview": "vite preview --host 0.0.0.0",
+    "clean": "node scripts/clean.mjs",
     "lint": "tsc --noEmit",
     "bundle:interventions": "node scripts/bundle-interventions.mjs",
     "test": "tsx --test src/**/*.test.ts",
     "test:load": "tsx scripts/load-test.ts",
-    "deploy:check": "npm run lint && npm test && npm run build"
+    "deploy:verify": "node scripts/verify-deployment.mjs",
+    "deploy:check": "npm run lint && npm test && npm run build && npm run deploy:verify"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
