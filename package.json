@@ -12,6 +12,7 @@
     "lint": "tsc --noEmit",
     "bundle:interventions": "node scripts/bundle-interventions.mjs",
     "test": "tsx --test src/**/*.test.ts",
+    "test:load": "tsx scripts/load-test.ts",
     "deploy:check": "npm run lint && npm test && npm run build"
   },
   "dependencies": {
