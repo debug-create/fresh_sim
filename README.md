@@ -160,6 +160,10 @@ npm run deploy:check
 ```
 This runs type checking, tests, the optimized Vite build, and deployment-artifact validation. Build outputs are generated in the `dist/` directory. See [DEPLOYMENT.md](./DEPLOYMENT.md) for Vercel and SPA routing details.
 
+### 5. Updating ML results
+
+The Results dashboard reads `src/data/evaluation/artifacts/results.json` at build time. Replace that file with a newly generated ML `results.json` using the same schema, then run `npm run deploy:check`. The seeded artifact keeps the evaluation visualizations available for frontend and judging-round testing.
+
 ---
 
 ## 👥 Demo Personas & Pre-Seeded Cases

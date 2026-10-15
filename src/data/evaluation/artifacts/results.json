@@ -1,0 +1,65 @@
+{
+  "schema_version": "3.0.0",
+  "generated_at": "2026-10-15T13:20:00+05:30",
+  "title": "AttackTwin AI — Closed-Loop Judge Demo Results",
+  "status": "demo_ready_local",
+  "dataset_contract": {
+    "scenarios": 60,
+    "candidate_edges": 3589,
+    "train": { "scenarios": 36, "edges": 2149 },
+    "validation": { "scenarios": 12, "edges": 760 },
+    "test": { "scenarios": 12, "edges": 680 }
+  },
+  "judge_demo": {
+    "scenario_id": "scenario_demo",
+    "before_containment": { "target_reach_probability": 0.7086, "expected_damage_inr": 79154240 },
+    "selected_containment": { "name": "Enforce Hardware MFA on Admin Role" },
+    "after_containment": { "target_reach_probability": 0.0, "expected_damage_inr": 15479840 },
+    "measured_reduction": { "expected_damage_reduction_inr": 63674400, "expected_damage_reduction_percent": 80.44, "critical_assets_protected": 2 },
+    "mcmc": { "chains": 4, "retained_samples": 720, "mean_acceptance_rate": 0.6302, "max_r_hat": 1.0147, "minimum_effective_sample_size": 135.7, "converged": true }
+  },
+  "ml_validation": {
+    "model": { "name": "hetero-gnn-v2-ensemble" },
+    "ordinary_validation": { "relationships": 760, "pr_auc": 0.7438028901, "roc_auc": 0.7179283645, "f1_at_0_5": 0.6799007444, "brier": 0.2152132252, "log_loss": 0.6196013045 },
+    "logistic_comparison": { "pr_auc": 0.7294086238, "roc_auc": 0.734381963, "f1_at_0_5": 0.7124856816, "brier": 0.2032448971, "log_loss": 0.5840608836 },
+    "paired_bootstrap": { "iterations": 500, "gnn_pr_auc_95_ci": [0.6989754541, 0.7906982461], "probability_gnn_better": 0.764, "statistically_conclusive": false },
+    "unseen_family_validation": { "aggregate_pr_auc": 0.7009073316, "aggregate_roc_auc": 0.665162656, "best_family": { "name": "direct_exposure" }, "weakest_family": { "name": "alternate_routes" } },
+    "selective_prediction": { "coverage": 0.25, "pr_auc": 0.861851753, "roc_auc": 0.7517143227, "brier": 0.1945153793 },
+    "indicative_test": {
+      "gnn": { "pr_auc": 0.7269, "roc_auc": 0.6859 },
+      "logistic": { "pr_auc": 0.7173, "roc_auc": 0.7007 }
+    }
+  },
+  "ensemble_analysis": {
+    "members": [
+      { "seed": 2026, "pr_auc": 0.7052, "log_loss": 0.6432 },
+      { "seed": 2027, "pr_auc": 0.7252, "log_loss": 0.6304 },
+      { "seed": 2028, "pr_auc": 0.7255, "log_loss": 0.6261 }
+    ],
+    "mean": { "pr_auc": 0.7438, "log_loss": 0.6196 },
+    "uncertainty": { "mean_variance": 0.0098, "median_variance": 0.0066, "p95_variance": 0.0304, "average_member_stddev": 0.0866 }
+  },
+  "robustness_scorecard": {
+    "families": [
+      { "id": "S1", "name": "benign_baseline", "pr_auc": 0.6488, "roc_auc": 0.6145, "f1": 0.7107 },
+      { "id": "S2", "name": "direct_exposure", "pr_auc": 0.8110, "roc_auc": 0.7636, "f1": 0.6957 },
+      { "id": "S3", "name": "multi_hop_compromise", "pr_auc": 0.7390, "roc_auc": 0.7178, "f1": 0.6667 },
+      { "id": "S4", "name": "loud_decoy", "pr_auc": 0.6303, "roc_auc": 0.6220, "f1": 0.5556 },
+      { "id": "S5", "name": "alternate_routes", "pr_auc": 0.5994, "roc_auc": 0.5252, "f1": 0.5376 },
+      { "id": "S6", "name": "intervention_what_if", "pr_auc": 0.7637, "roc_auc": 0.7232, "f1": 0.7273 }
+    ],
+    "stress_tests": [
+      { "name": "Original validation", "pr_auc": 0.7438, "delta_pr_auc": 0.0 },
+      { "name": "Mask evidence basis", "pr_auc": 0.6897, "delta_pr_auc": -0.0541 },
+      { "name": "Neutralize prior", "pr_auc": 0.7366, "delta_pr_auc": -0.0072 },
+      { "name": "Strip security controls", "pr_auc": 0.7368, "delta_pr_auc": -0.0070 },
+      { "name": "Combined stress", "pr_auc": 0.6578, "delta_pr_auc": -0.0860 }
+    ],
+    "evidence_invariants": { "passed": 7, "total": 7 }
+  },
+  "claim_guardrails": [
+    "All monetary impact values are synthetic INR estimates for demonstration and comparison.",
+    "Blast-radius reduction is projected on a cloned digital twin until telemetry verifies the action.",
+    "The GNN does not conclusively outperform logistic regression across every metric."
+  ]
+}
